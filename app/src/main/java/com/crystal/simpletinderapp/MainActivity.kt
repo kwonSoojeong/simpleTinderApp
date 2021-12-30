@@ -18,6 +18,8 @@ class MainActivity : AppCompatActivity() {
         super.onStart()
         if(auth.currentUser == null){
             startActivity(Intent(this, LoginActivity::class.java))
+        }else{
+            startActivity(Intent(this, LikeActivity::class.java))
         }
     }
 
