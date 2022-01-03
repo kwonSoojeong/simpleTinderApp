@@ -16,7 +16,6 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:textColor="@color/black"
-        android:text="123"
         android:textSize="40sp"/>
     </LinearLayout>
 

@@ -137,9 +137,9 @@ class LoginActivity: AppCompatActivity() {
         }
         val userId = auth.currentUser?.uid.orEmpty()
         //firebase realtime data base 에 저장하기.
-        val currentUserDB = Firebase.database.reference.child("Users").child(userId)
+        val currentUserDB = Firebase.database.reference.child(DBKey.USERS).child(userId)
         val user = mutableMapOf<String, Any>()
-        user["userID"] = userId
+        user[DBKey.USER_ID] = userId
         currentUserDB.updateChildren(user)
 
         finish()

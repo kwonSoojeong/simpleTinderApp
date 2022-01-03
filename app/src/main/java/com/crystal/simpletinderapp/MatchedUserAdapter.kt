@@ -1,6 +1,5 @@
 package com.crystal.simpletinderapp
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,24 +8,24 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 
-
-class CardItemAdapter: ListAdapter<CardItem, CardItemAdapter.ViewHolder>(diffUtil) {
-    inner class ViewHolder(private val view: View): RecyclerView.ViewHolder(view) {
-        fun bind(cardItem: CardItem){
-            view.findViewById<TextView>(R.id.nameTextView).text = cardItem.name
+class MatchedUserAdapter : ListAdapter<CardItem, MatchedUserAdapter.ViewHolder>(diffUtil) {
+    inner class ViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
+        fun bind(cardItem: CardItem) {
+            view.findViewById<TextView>(R.id.matchedUserNameTextview).text = cardItem.name
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardItemAdapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        return ViewHolder(inflater.inflate(R.layout.item_card, parent, false))
+        return ViewHolder(inflater.inflate(R.layout.item_matched_user, parent, false))
     }
 
-    override fun onBindViewHolder(holder: CardItemAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(currentList[position])
     }
-    companion object{
-        val diffUtil = object : DiffUtil.ItemCallback<CardItem>(){
+
+    companion object {
+        val diffUtil = object : DiffUtil.ItemCallback<CardItem>() {
             override fun areItemsTheSame(oldItem: CardItem, newItem: CardItem): Boolean {
                 return oldItem.userId == newItem.userId
             }
@@ -37,5 +36,4 @@ class CardItemAdapter: ListAdapter<CardItem, CardItemAdapter.ViewHolder>(diffUti
 
         }
     }
-
 }
