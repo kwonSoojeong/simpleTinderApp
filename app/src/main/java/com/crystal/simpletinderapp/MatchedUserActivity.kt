@@ -48,7 +48,7 @@ class MatchedUserActivity : AppCompatActivity() {
     private fun getUserByKey(userId: String) {
         usersDB.child(userId).addListenerForSingleValueEvent(object: ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
-                matchedCardItems.add(CardItem(userId, snapshot.child("name").value.toString()))
+                matchedCardItems.add(CardItem(userId, snapshot.child(DBKey.NAME).value.toString()))
                 adapter.submitList(matchedCardItems)
             }
 
